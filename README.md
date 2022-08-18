@@ -20,10 +20,10 @@
 
 اصول مهندسی نرم افزار، از کتاب [*کد تمیز*](https://www.digikala.com/product/dkp-4964829/%DA%A9%D8%AA%D8%A7%D8%A8-clean-code-a-handbook-of-agile-software-craftsmanship-%D8%A7%D8%AB%D8%B1-robert-c-martin-%D8%A7%D9%86%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA-pearson/) نوشته ی Robert C. Martin، برای پایتون. این یک راهنمای تولید نیست، این یک راهنما برای تولید نرم افزار های خوانا، قابل استفاده مجدد و قابل از نو بازسازی است.
 نیازی بر سرسختگیری بر هر اصل گفته شده در اینجا نیست، و فقط تعداد کمی از آنها به صورت عمومی مورد تایید هستند. این ها چیزی جز اصول نیستند، اما اصول کدنویسی شده ای توسط سالها تجربه از نویسنده های *کد تمیز* هستند.
-## **Variables**
-### Use meaningful and pronounceable variable names
+## **متغیر ها**
+### از اسم های متغیر با معنا و قابل تلفظ استفاده کنید
 
-**Bad:**
+**بد:**
 
 ```python
 import datetime
@@ -34,7 +34,7 @@ ymdstr = datetime.date.today().strftime("%y-%m-%d")
 
 Additionally, there's no need to add the type of the variable (str) to its name.
 
-**Good**:
+**خوب**:
 
 ```python
 import datetime
@@ -42,11 +42,10 @@ import datetime
 
 current_date: str = datetime.date.today().strftime("%y-%m-%d")
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Use the same vocabulary for the same type of variable
-
-**Bad:**
+### از واژگان یکسان برای همان نوع متغیر استفاده کنید
+**بد:**
 Here we use three different names for the same underlying entity:
 
 ```python
@@ -55,8 +54,8 @@ def get_client_data(): pass
 def get_customer_record(): pass
 ```
 
-**Good**:
-If the entity is the same, you should be consistent in referring to it in your functions:
+**خوب**:
+اگر موجودیت یکسان است، باید در ارجاع به آن در توابع خود ثابت قدم باشید:
 
 ```python
 def get_user_info(): pass
@@ -64,9 +63,9 @@ def get_user_data(): pass
 def get_user_record(): pass
 ```
 
-**Even better**
-Python is (also) an object oriented programming language. If it makes sense, package the functions together with the concrete implementation
-of the entity in your code, as instance attributes, property methods, or methods:
+**حتی بهتر**
+
+پایتون (همچنین) یک زبان برنامه نویسی شی گرا است. اگر منطقی است، توابع را همراه با پیاده‌سازی مشخص موجودیت در کد خود، به‌عنوان ویژگی‌های نمونه، متدهای ویژگی یا متدها بسته‌بندی کنید
 
 ```python
 from typing import Union, Dict
@@ -87,15 +86,12 @@ class User:
         return Record()
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Use searchable names
-We will read more code than we will ever write. It's important that the code we do write is
-readable and searchable. By *not* naming variables that end up being meaningful for
-understanding our program, we hurt our readers.
-Make your names searchable.
+### از اسامی قابل جست و جو استفاده کنید
+ما بیشتر کد میخوانیم تا بنویسیم. این خیلی مهم است که کدی که مینویسیم خوانا و قابل جستجو باشد. با نام گذاری *نکردن* متغیر هایی که برای برنامه قابل فهم باشد، به خواننده هایمان آسیب میرسانیم. اسامی متغیرهایتان را قابل جست و جو کنید.
 
-**Bad:**
+**بد:**
 
 ```python
 import time
@@ -105,7 +101,7 @@ import time
 time.sleep(86400)
 ```
 
-**Good**:
+**خوب**:
 
 ```python
 import time
@@ -115,10 +111,10 @@ import time
 SECONDS_IN_A_DAY = 60 * 60 * 24
 time.sleep(SECONDS_IN_A_DAY)
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Use explanatory variables
-**Bad:**
+### از متغیر های توضیحی استفاده کنید
+**بد:**
 
 ```python
 import re
@@ -132,10 +128,9 @@ if matches:
     print(f"{matches[1]}: {matches[2]}")
 ```
 
-**Not bad**:
+**بد نیست**:
 
-It's better, but we are still heavily dependent on regex.
-
+بهتر است، اما هنوز به شدت به رجکس وابسته ایم.
 ```python
 import re
 
@@ -149,9 +144,10 @@ if matches:
     print(f"{city}: {zip_code}")
 ```
 
-**Good**:
+**خوب**:
 
-Decrease dependence on regex by naming subpatterns.
+
+وابستگی به رجکس را با نام گذاری الگوهای فرعی کمتر کنید.
 
 ```python
 import re
@@ -164,13 +160,14 @@ matches = re.match(city_zip_code_regex, address)
 if matches:
     print(f"{matches['city']}, {matches['zip_code']}")
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid Mental Mapping
-Don’t force the reader of your code to translate what the variable means.
-Explicit is better than implicit.
+### از نقشه برداری ذهنی خودداری کنید
 
-**Bad:**
+خواننده ی کدتان را مجبور نکنید که اسامی متغیرهای شمارا ترجمه کنند.
+صریح بهتر از ضمنی است.
+
+**بد:**
 
 ```python
 seq = ("Austin", "New York", "San Francisco")
@@ -183,7 +180,7 @@ for item in seq:
     print(item)
 ```
 
-**Good**:
+**خوب**:
 
 ```python
 locations = ("Austin", "New York", "San Francisco")
@@ -194,15 +191,14 @@ for location in locations:
     # ...
     print(location)
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 
-### Don't add unneeded context
+### توضیحات اضافی ننویسید
 
-If your class/object name tells you something, don't repeat that in your
-variable name.
+اگر اسم کلاس/شیء شما چیزی را میگوید، نیازی نیست که آنرا در اسامی متغیر هایتان تکرار کنید.
 
-**Bad:**
+**بد:**
 
 ```python
 class Car:
@@ -211,7 +207,7 @@ class Car:
     car_color: str
 ```
 
-**Good**:
+**خوب**:
 
 ```python
 class Car:
@@ -220,13 +216,13 @@ class Car:
     color: str
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Use default arguments instead of short circuiting or conditionals
+### از آرگومان های پیشفرض به جای شروط یک خطی استفاده کنید.
 
-**Tricky**
+**بد**
 
-Why write:
+چرا بنویسیم :
 
 ```python
 import hashlib
@@ -238,10 +234,9 @@ def create_micro_brewery(name):
     # etc.
 ```
 
-... when you can specify a default argument instead? This also makes it clear that
-you are expecting a string as the argument.
+...زمانی که میتوانید از یک آرگومان پیشفرض استفاده کنید ؟ این همچنین خواننده را کاملا روشن میکند که شما برای آرگومانتان یک رشته میخواهید.
 
-**Good**:
+**خوب**:
 
 ```python
 import hashlib
@@ -252,7 +247,7 @@ def create_micro_brewery(name: str = "Hipster Brew Co."):
     # etc.
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 ## **Functions**
 ### Function arguments (2 or fewer ideally)
 Limiting the amount of function parameters is incredibly important because it makes
@@ -430,7 +425,7 @@ create_menu(
     )
 )
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 ### Functions should do one thing
 This is by far the most important rule in software engineering. When functions do more
@@ -517,7 +512,7 @@ def email_client(clients: Iterator[Client]) -> None:
 ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 ### Function names should say what they do
 
@@ -544,7 +539,7 @@ message = Email()
 message.send()
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 ### Functions should only be one level of abstraction
 
@@ -612,7 +607,7 @@ def parse(tokens: List) -> List:
     return syntax_tree
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 ### Don't use flags as function parameters
 
@@ -649,7 +644,7 @@ def create_temp_file(name: str) -> None:
     (Path(gettempdir()) / name).touch()
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 ### Avoid side effects
 
@@ -732,7 +727,7 @@ print(person.name)  # => "Ryan McDermott"
 print(person.name_as_first_and_last)  # => ["Ryan", "McDermott"]
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 ## **Classes**
 
@@ -1375,7 +1370,7 @@ This example was taken from
 [a submission made to the Django documentation](https://code.djangoproject.com/ticket/21179)
 by this author.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 ## **Don't repeat yourself (DRY)**
 
@@ -1517,7 +1512,7 @@ company_managers_list = get_employee_list(employees=company_managers)
 
 
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 ## **Translations**
 
@@ -1525,4 +1520,4 @@ This document is also available in other languages:
 
 - ![br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Brazilian Portuguese**: [fredsonchaves07/clean-code-python](https://github.com/fredsonchaves07/clean-code-python)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
