@@ -1,36 +1,25 @@
-# clean-code-python
+# کد تمیز در پایتون
 
 [![Build Status](https://travis-ci.com/zedr/clean-code-python.svg?branch=master)](https://travis-ci.com/zedr/clean-code-python)
 [![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/download/releases/3.8.3/)
 
-## Table of Contents
-  1. [Introduction](#introduction)
-  2. [Variables](#variables)
-  3. [Functions](#functions)
-  5. [Classes](#classes)
+## فهرست مطالب
+  1. [مقدمه](#مقدمه)
+  2. [متغیر ها](#variables)
+  3. [توابع](#functions)
+  5. [کلاس ها](#classes)
      1. [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
      2. [O: Open/Closed Principle (OCP)](#openclosed-principle-ocp)
      3. [L: Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
      4. [I: Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
      5. [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
   6. [Don't repeat yourself (DRY)](#dont-repeat-yourself-dry)
-  7. [Translation](#translation)
+  7. [ترجمه](#translation)
 
-## Introduction
+## مقدمه
 
-Software engineering principles, from Robert C. Martin's book
-[*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for Python. This is not a style guide. It's a guide to producing
-readable, reusable, and refactorable software in Python.
-
-Not every principle herein has to be strictly followed, and even fewer will be universally
-agreed upon. These are guidelines and nothing more, but they are ones codified over many
-years of collective experience by the authors of *Clean Code*.
-
-Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
-
-Targets Python3.7+
-
+اصول مهندسی نرم افزار، از کتاب [*کد تمیز*](https://www.digikala.com/product/dkp-4964829/%DA%A9%D8%AA%D8%A7%D8%A8-clean-code-a-handbook-of-agile-software-craftsmanship-%D8%A7%D8%AB%D8%B1-robert-c-martin-%D8%A7%D9%86%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA-pearson/) نوشته ی Robert C. Martin، برای پایتون. این یک راهنمای تولید نیست، این یک راهنما برای تولید نرم افزار های خوانا، قابل استفاده مجدد و قابل از نو بازسازی است.
+نیازی بر سرسختگیری بر هر اصل گفته شده در اینجا نیست، و فقط تعداد کمی از آنها به صورت عمومی مورد تایید هستند. این ها چیزی جز اصول نیستند، اما اصول کدنویسی شده ای توسط سالها تجربه از نویسنده های *کد تمیز* هستند.
 ## **Variables**
 ### Use meaningful and pronounceable variable names
 
