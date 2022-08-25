@@ -248,25 +248,22 @@ def create_micro_brewery(name: str = "Hipster Brew Co."):
 ```
 
 **[⬆ برگشت به بالا](#table-of-contents)**
-## **Functions**
-### Function arguments (2 or fewer ideally)
-Limiting the amount of function parameters is incredibly important because it makes
-testing your function easier. Having more than three leads to a combinatorial explosion
-where you have to test tons of different cases with each separate argument.
 
-Zero arguments is the ideal case. One or two arguments is ok, and three should be avoided.
-Anything more than that should be consolidated. Usually, if you have more than two
-arguments then your function is trying to do too much. In cases where it's not, most
-of the time a higher-level object will suffice as an argument.
+### آرگومان های توابع (ترجیحاً دو یا کمتر)
 
-**Bad:**
+کم کردن مقادیر پارامتر های توابع بسیار مهم است چون تست کردن آنهارا راحت تر میکند. بیشتر از سه تا منجر به انفجاری ترکیبی میشود چون باید حالت های مختلف را با آرگومان های متفاوت تست کنید.
+
+آرگومان نداشتن حالت آیده آل است. یکی یا دوتا خوب است، و باید از سه تا اجتناب کرد. 
+هرچیزی بیشتر از آن باید یک رقم شود. معمولا اگر بیشتر از دو آرگومان دارید، کد شما دارد چند کار را باهم انجام میدهد. در شرایطی که اینگونه نیست، اغلب اوقات یک شی سطح بالاتر به عنوان یک آرگومان کافی است.
+
+**بد:**
 
 ```python
 def create_menu(title, body, button_text, cancellable):
     pass
 ```
 
-**Java-esque**:
+**به سبک جاوا**:
 
 ```python
 class Menu:
@@ -285,7 +282,7 @@ menu = Menu(
 )
 ```
 
-**Also good**
+**این هم خوب است**
 
 ```python
 class MenuConfig:
@@ -319,7 +316,7 @@ config.cancellable = True
 create_menu(config)
 ```
 
-**Fancy**
+**تفننی**
 
 ```python
 from typing import NamedTuple
@@ -354,7 +351,7 @@ create_menu(
 )
 ```
 
-**Even fancier**
+**تفننی تر**
 
 ```python
 from dataclasses import astuple, dataclass
@@ -389,7 +386,7 @@ create_menu(
 )
 ```
 
-**Even fancier, Python3.8+ only**
+**باز هم تفننی تر، فقط پایتون 3.8+**
 
 ```python
 from typing import TypedDict
@@ -427,14 +424,11 @@ create_menu(
 ```
 **[⬆ برگشت به بالا](#table-of-contents)**
 
-### Functions should do one thing
-This is by far the most important rule in software engineering. When functions do more
-than one thing, they are harder to compose, test, and reason about. When you can isolate
-a function to just one action, they can be refactored easily and your code will read much
-cleaner. If you take nothing else away from this guide other than this, you'll be ahead
-of many developers.
+## **توابع**
+### توابع فقط باید یک کار انجام دهند.
+این مهم ترین قانون در طراحی نرم افزار است. وقتی توابع بیشتر از یک کار انجام میدهند، سخت تر میتوان آنهارا نوشت و تست و استدلال کرد. وقتی که یک تابع را فقط به یک رفتار ایزوله میکنید، به راحتی میتوان آنهارا از نو نوشت و کدتان بسیار تمیزتر خواهد بود. اگر فقط همین مورد را از این راهنما یاد بگیرید، از بسیاری از برنامه نویس ها جلوتر خواهید بود.
 
-**Bad:**
+**بد:**
 
 ```python
 from typing import List
@@ -456,7 +450,7 @@ def email_clients(clients: List[Client]) -> None:
             email(client)
 ```
 
-**Good**:
+**خوب**:
 
 ```python
 from typing import List
@@ -483,9 +477,9 @@ def email_clients(clients: List[Client]) -> None:
         email(client)
 ```
 
-Do you see an opportunity for using generators now?
+آیا اکنون فرصتی برای استفاده از چنریتور ها می بینید؟
 
-**Even better**
+**حتی بهتر**
 
 ```python
 from typing import Generator, Iterator
@@ -511,8 +505,6 @@ def email_client(clients: Iterator[Client]) -> None:
         email(client)
 ```
 
-
-**[⬆ برگشت به بالا](#table-of-contents)**
 
 ### Function names should say what they do
 
@@ -541,12 +533,11 @@ message.send()
 
 **[⬆ برگشت به بالا](#table-of-contents)**
 
-### Functions should only be one level of abstraction
+### توابع باید فقط یک مرحله از انتزاع داشته باشند.
 
-When you have more than one level of abstraction, your function is usually doing too
-much. Splitting up functions leads to reusability and easier testing.
+وقتی که کدتان بیشتر از یک مرحله انتزاع دارد، کدتان دارد زیاد کار انجام میدهد. تکه تکه کردن توابع باعث خوانایی کد و تست نویسی آسان تر میشود.
 
-**Bad:**
+**بد:**
 
 ```python
 # type: ignore
@@ -570,7 +561,7 @@ def parse_better_js_alternative(code: str) -> None:
         pass
 ```
 
-**Good:**
+**خوب:**
 
 ```python
 from typing import Tuple, List, Dict
@@ -609,13 +600,11 @@ def parse(tokens: List) -> List:
 
 **[⬆ برگشت به بالا](#table-of-contents)**
 
-### Don't use flags as function parameters
+### از فلگ ها برای پارامتر های تابعتان استفاده نکنید.
 
-Flags tell your user that this function does more than one thing. Functions
-should do one thing. Split your functions if they are following different code
-paths based on a boolean.
+فلگ ها به کاربر ها میگویند که این تابع بیشتر از یک کار انجام میدهد. توابع باید یک کار انجام دهند. توابعتان را تکه تکه کنید اگر کدهای متفاوتی بر حسب یک بولین هستند.
 
-**Bad:**
+**بد:**
 
 ```python
 from tempfile import gettempdir
@@ -629,7 +618,7 @@ def create_file(name: str, temp: bool) -> None:
         Path(name).touch()
 ```
 
-**Good:**
+**خوب:**
 
 ```python
 from tempfile import gettempdir
@@ -646,25 +635,15 @@ def create_temp_file(name: str) -> None:
 
 **[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid side effects
+### از تاثیرات جانبی خودداری کنید
 
-A function produces a side effect if it does anything other than take a value in
-and return another value or values. For example, a side effect could be writing
-to a file, modifying some global variable, or accidentally wiring all your money
-to a stranger.
+یک تابع هنگامی اثر جانبی دارد که کاری بجز گرفتن یک مقدار و برگرداندن مقدار یا مقدار هایی دیگر انجام دهد. برای مثال، یک اثر جانبی میتواند نوشتن به یک فایل، تغییر دادن متغیر های گلوبال و یا انتقال تمامی اموالتان به یک غریبه باشد.
+حالا، بعضی اوقات نیاز است که برنامه شما اثرات جانبی داشته باشد - برای مثال، همانند مثال قبلی، نیاز داشته باشید که به یک فایل بنویسید. در این شرایط، شما باید متمرکز باشید و مشخص کنید که در کجا اثرات جانبی ایجاد میکنید. چندین تابع و کلاس نداشته باشید که به یک فایل مینویسند، بلکه یک و فقط یک سرویس داشته باشید که تمامی این کارها را انجام میدهد. 
+نکته اصیل اجتناب از دام های رایج مثل تبادل وضعیت بین چندین شیء بدون هیچ ساختمان، استفاده از دیتاتایپ های قابل تغییر که هرچیزی بتواند به آن بنویسد یا استفاده کردن نمونه ای از یک کلاس به جای متمرکز کردن مکان هایی که اثرات جانبی خواهید داشت. 
+اگر بتوانید این کار را انجام دهید، از بیشتر برنامه نویس ها خوشحال تر خواهید بود.
 
-Now, you do need to have side effects in a program on occasion - for example, like
-in the previous example, you might need to write to a file. In these cases, you
-should centralize and indicate where you are incorporating side effects. Don't have
-several functions and classes that write to a particular file - rather, have one
-(and only one) service that does it.
 
-The main point is to avoid common pitfalls like sharing state between objects
-without any structure, using mutable data types that can be written to by anything,
-or using an instance of a class, and not centralizing where your side effects occur.
-If you can do this, you will be happier than the vast majority of other programmers.
-
-**Bad:**
+**بد:**
 
 ```python
 # type: ignore
@@ -691,7 +670,7 @@ print(fullname)  # ["Ryan", "McDermott"]
 # function again?
 ```
 
-**Good:**
+**خوب:**
 
 ```python
 from typing import List, AnyStr
@@ -705,8 +684,7 @@ name, surname = split_into_first_and_last_name(fullname)
 
 print(name, surname)  # => Ryan McDermott
 ```
-
-**Also good**
+**همچنین خوب :**
 
 ```python
 from dataclasses import dataclass
