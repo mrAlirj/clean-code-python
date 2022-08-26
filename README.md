@@ -1,20 +1,16 @@
 # کد تمیز در پایتون
 
-[![Build Status](https://travis-ci.com/zedr/clean-code-python.svg?branch=master)](https://travis-ci.com/zedr/clean-code-python)
-[![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/download/releases/3.8.3/)
-
 ## فهرست مطالب
   1. [مقدمه](#مقدمه)
-  2. [متغیر ها](#variables)
-  3. [توابع](#functions)
-  5. [کلاس ها](#classes)
+  2. [متغیر ها](#متغیر-ها)
+  3. [توابع](#توابع)
+  5. [کلاس ها](#کلاس-ها)
      1. [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
      2. [O: Open/Closed Principle (OCP)](#openclosed-principle-ocp)
      3. [L: Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
      4. [I: Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
      5. [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
   6. [Don't repeat yourself (DRY)](#dont-repeat-yourself-dry)
-  7. [ترجمه](#translation)
 
 ## مقدمه
 
@@ -1261,29 +1257,17 @@ def some_streaming_csv_view(request):
 
 ## **Don't repeat yourself (DRY)**
 
-Try to observe the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principle.
+تلاش کنید که اصل [DRY](https://fa.wikipedia.org/wiki/Don%27t_repeat_yourself) را متوجه بشوید.
 
-Do your absolute best to avoid duplicate code. Duplicate code is bad because
-it means that there's more than one place to alter something if you need to
-change some logic.
+بهترین تلاشتان را بکنید که کدی را دوباره ننویسید. تکرار کد بد است چون به این معنیست که هنگام ایجاد تغییر، باید بیشتر از دو جا را تغییر دهید.
 
-Imagine if you run a restaurant and you keep track of your inventory: all your
-tomatoes, onions, garlic, spices, etc. If you have multiple lists that
-you keep this on, then all have to be updated when you serve a dish with
-tomatoes in them. If you only have one list, there's only one place to update!
+تصور کنید که صاحب رستورانی هستید و میخواهید آمار انبارتان را داشته باشید: تمامی گوجه ها، پیاز ها، سیر ها، ادویه ها و... . اگر چندین لیست داشته باشید که آمار اینهارا ثبت کنند، هروقت که غذایی با گوجه سرو کنید باید تمامی این لیست هارا آپدیت کنید. اما اگر فقط یک لیست داشته باشید، فقط یک جا را باید آپدیت کنید!
 
-Often you have duplicate code because you have two or more slightly
-different things, that share a lot in common, but their differences force you
-to have two or more separate functions that do much of the same things. Removing
-duplicate code means creating an abstraction that can handle this set of different
-things with just one function/module/class.
+بیشتر اوقات شما وقتی کد را چندین بار تکرار میکنید که دو چیز یا بیشتر کمی متفاوت داشته باشید، که بسیار شبیه به هم باشند، اما این شباهتشان شمارا به داشتن دو تابع یا بیشتر مجبور میکنند که اکثراً یک کار را انجام میدهند. حذف کردن کد های تکراری به معنی ساختن انتزاعی است که بتواند این کارهارا با یک تابع/ماژول/کلاس انجام دهد.
 
-Getting the abstraction right is critical. Bad abstractions can be
-worse than duplicate code, so be careful! Having said this, if you can make
-a good abstraction, do it! Don't repeat yourself, otherwise you'll find yourself
-updating multiple places any time you want to change one thing.
+درست ساختن انتزاع مهم است. انتزاع بد میتواند از کد تکراری هم بدتر باشد! با این، اگر میتوانید یک انتزاع خوب بسازید، انجامش دهید! خودتان را تکرار نکنید، وگرنه مجبور میشوید چندین جا را برای تغییر کوچکی آپدیت کنید.
 
-**Bad:**
+**بد:**
 
 ```python
 from typing import List, Dict
@@ -1396,15 +1380,5 @@ company_managers = [
 ]
 company_managers_list = get_employee_list(employees=company_managers)
 ```
-
-
-
-**[⬆ برگشت به بالا](#table-of-contents)**
-
-## **ترجمه ها**
-
-This document is also available in other languages:
-
-- ![br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Brazilian Portuguese**: [fredsonchaves07/clean-code-python](https://github.com/fredsonchaves07/clean-code-python)
 
 **[⬆ برگشت به بالا](#table-of-contents)**
