@@ -28,7 +28,7 @@ import datetime
 ymdstr = datetime.date.today().strftime("%y-%m-%d")
 ```
 
-Additionally, there's no need to add the type of the variable (str) to its name.
+به علاوه، نیازی به استفاده کردن تایپ `str` برای اسم نیست.
 
 **خوب**:
 
@@ -42,7 +42,7 @@ current_date: str = datetime.date.today().strftime("%y-%m-%d")
 
 ### از واژگان یکسان برای همان نوع متغیر استفاده کنید
 **بد:**
-Here we use three different names for the same underlying entity:
+ما در اینجا از چند اسم برای یک موجود استفاده میکنیم:
 
 ```python
 def get_user_info(): pass
