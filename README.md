@@ -5,11 +5,11 @@
   2. [متغیر ها](#متغیر-ها)
   3. [توابع](#توابع)
   5. [کلاس ها](#کلاس-ها)
-     *. [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
-     *. [O: Open/Closed Principle (OCP)](#openclosed-principle-ocp)
-     *. [L: Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
-     *. [I: Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
-     *. [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
+     * [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
+     * [O: Open/Closed Principle (OCP)](#openclosed-principle-ocp)
+     * [L: Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
+     * [I: Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
+     * [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
   6. [Don't repeat yourself (DRY)](#dont-repeat-yourself-dry)
 
 ## مقدمه
