@@ -502,9 +502,9 @@ def email_client(clients: Iterator[Client]) -> None:
 ```
 
 
-### Function names should say what they do
+### اسامی توابع باید کاری که انجام میدهند را بگویند.
 
-**Bad:**
+**بد:**
 
 ```python
 class Email:
@@ -516,7 +516,7 @@ message = Email()
 message.handle()
 ```
 
-**Good:**
+**خوب:**
 
 ```python
 class Email:
